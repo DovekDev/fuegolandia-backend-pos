@@ -4,7 +4,20 @@ import Product from "../database/models/Product.js";
 export async function getProducts(req, res) {
   try {
     const products = await Product.find(); // Mongoose usa find() en lugar de findAll()
-    res.json(products);
+    
+    const formatted = products.map(p => ({
+      id: p._id,
+      name: p.name,
+      price: p.price,
+      stock: p.stock,
+      code: p.code,
+      img: p.img,
+      active: p.active,
+      createdAt: p.createdAt,
+      updatedAt: p.updatedAt,
+    }));
+
+    res.json(formatted);
   } catch (err) {
     res.status(500).json({ error: "Error al obtener productos", details: err.message });
   }
@@ -15,7 +28,20 @@ export async function getProductById(req, res) {
   try {
     const product = await Product.findById(req.params.id); // findById reemplaza a findByPk
     if (!product) return res.status(404).json({ error: "Producto no encontrado" });
-    res.json(product);
+
+    const formatted = {
+      id: product._id,
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+      code: product.code,
+      img: product.img,
+      active: product.active,
+      createdAt: product.createdAt,
+      updatedAt: product.updatedAt,
+    };
+    
+    res.json(formatted);
   } catch (err) {
     res.status(500).json({ error: "Error al obtener producto", details: err.message });
   }
@@ -26,7 +52,20 @@ export async function createProduct(req, res) {
   try {
     const { name, code, price, stock, img, active } = req.body;
     const newProduct = await Product.create({ name, code, price, stock, img, active });
-    res.status(201).json(newProduct);
+    
+    const formatted = {
+      id: newProduct._id,
+      name: newProduct.name,
+      price: newProduct.price,
+      stock: newProduct.stock,
+      code: newProduct.code,
+      img: newProduct.img,
+      active: newProduct.active,
+      createdAt: newProduct.createdAt,
+      updatedAt: newProduct.updatedAt,
+    };
+    
+    res.status(201).json(formatted);
   } catch (err) {
     res.status(500).json({ error: "Error al crear producto", details: err.message });
   }

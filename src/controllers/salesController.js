@@ -17,7 +17,22 @@ export async function getSales(req, res) {
       .populate("items.productId")
       .populate("items.bundleId")
       .sort({ date: -1 }); // orden descendente por fecha
-    res.json(sales);
+    
+    const formatted = sales.map(s => ({
+      id: s._id,
+      date: s.date,
+      subtotal: s.subtotal,
+      total: s.total,
+      amountPaid: s.amountPaid,
+      change: s.change,
+      paymentMethod: s.paymentMethod,
+      code: s.code,
+      createdAt: s.createdAt,
+      updatedAt: s.updatedAt,
+      items: s.items,
+    }));
+    
+      res.json(formatted);
   } catch (err) {
     res.status(500).json({ error: "Error al obtener ventas", details: err.message });
   }
@@ -30,7 +45,22 @@ export async function getSaleById(req, res) {
       .populate("items.productId")
       .populate("items.bundleId");
     if (!sale) return res.status(404).json({ error: "Venta no encontrada" });
-    res.json(sale);
+    
+    const formatted = {
+      id: sale._id,
+      date: sale.date,
+      subtotal: sale.subtotal,
+      total: sale.total,
+      amountPaid: sale.amountPaid,
+      change: sale.change,
+      paymentMethod: sale.paymentMethod,
+      code: sale.code,
+      createdAt: sale.createdAt,
+      updatedAt: sale.updatedAt,
+      items: sale.items,
+    };
+    
+    res.json(formatted);
   } catch (err) {
     res.status(500).json({ error: "Error al obtener venta", details: err.message });
   }
@@ -43,7 +73,7 @@ export async function createSale(req, res) {
 
     // Calcular subtotal sumando items
     let subtotal = 0;
-    if (items && item.length > 0) {
+    if (items && items.length > 0) {
       subtotal = items.reduce((acc, item) => acc + item.unitPrice * item.quantity, 0);
     }
 
@@ -94,7 +124,21 @@ export async function createSale(req, res) {
       .populate("items.productId")
       .populate("items.bundleId");
 
-    res.status(201).json(saleWithItems);
+    const formatted = {
+      id: saleWithItems._id,
+      date: saleWithItems.date,
+      subtotal: saleWithItems.subtotal,
+      total: saleWithItems.total,
+      amountPaid: saleWithItems.amountPaid,
+      change: saleWithItems.change,
+      paymentMethod: saleWithItems.paymentMethod,
+      code: saleWithItems.code,
+      createdAt: saleWithItems.createdAt,
+      updatedAt: saleWithItems.updatedAt,
+      items: saleWithItems.items,
+    };
+
+    res.status(201).json(formatted);
   } catch (err) {
     res.status(500).json({ error: "Error al crear venta", details: err.message });
   }
