@@ -1,0 +1,18 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"pos_pirotecnia"},
+{"type":"table","name":"sale_items","database":"pos_pirotecnia","data":
+[
+{"id":"10","quantity":"3","unitPrice":"400.00","type":"product","saleId":"5","productId":"1","bundleId":null},
+{"id":"11","quantity":"1","unitPrice":"800.00","type":"product","saleId":"5","productId":"2","bundleId":null},
+{"id":"12","quantity":"2","unitPrice":"500.00","type":"product","saleId":"5","productId":"9","bundleId":null},
+{"id":"15","quantity":"2","unitPrice":"800.00","type":"product","saleId":"7","productId":"2","bundleId":null},
+{"id":"16","quantity":"4","unitPrice":"400.00","type":"product","saleId":"7","productId":"1","bundleId":null},
+{"id":"17","quantity":"3","unitPrice":"500.00","type":"product","saleId":"8","productId":"11","bundleId":null},
+{"id":"18","quantity":"5","unitPrice":"400.00","type":"product","saleId":"8","productId":"1","bundleId":null},
+{"id":"19","quantity":"2","unitPrice":"400.00","type":"product","saleId":"9","productId":"1","bundleId":null},
+{"id":"20","quantity":"1","unitPrice":"300.00","type":"product","saleId":"9","productId":"5","bundleId":null},
+{"id":"21","quantity":"2","unitPrice":"400.00","type":"product","saleId":"10","productId":"1","bundleId":null}
+]
+}
+]

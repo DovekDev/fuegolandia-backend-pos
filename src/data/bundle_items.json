@@ -1,0 +1,12 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"pos_pirotecnia"},
+{"type":"table","name":"bundle_items","database":"pos_pirotecnia","data":
+[
+{"id":"7","quantity":"12","bundleId":"6","productId":"5"},
+{"id":"8","quantity":"12","bundleId":"5","productId":"9"},
+{"id":"9","quantity":"40","bundleId":"3","productId":"1"},
+{"id":"11","quantity":"10","bundleId":"8","productId":"4"}
+]
+}
+]

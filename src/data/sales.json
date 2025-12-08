@@ -1,0 +1,13 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"pos_pirotecnia"},
+{"type":"table","name":"sales","database":"pos_pirotecnia","data":
+[
+{"id":"5","date":"2025-12-06 01:57:39","subtotal":"3000.00","total":"3000.00","amountPaid":"3000.00","change":"0.00","paymentMethod":"transferencia","code":"SALE-20251205-1764986231606","createdAt":"2025-12-06 01:57:11","updatedAt":"2025-12-06 01:57:11"},
+{"id":"7","date":"2025-12-07 07:38:34","subtotal":"3200.00","total":"3000.00","amountPaid":"3000.00","change":"-200.00","paymentMethod":"efectivo","code":"SALE-20251207-1765093086436","createdAt":"2025-12-07 07:38:06","updatedAt":"2025-12-07 07:38:06"},
+{"id":"8","date":"2025-12-07 07:39:50","subtotal":"3500.00","total":"3500.00","amountPaid":"3500.00","change":"0.00","paymentMethod":"transferencia","code":"SALE-20251207-1765093162266","createdAt":"2025-12-07 07:39:22","updatedAt":"2025-12-07 07:39:22"},
+{"id":"9","date":"2025-12-08 01:32:07","subtotal":"1100.00","total":"1000.00","amountPaid":"1000.00","change":"-100.00","paymentMethod":"efectivo","code":"SALE-20251207-1765157499279","createdAt":"2025-12-08 01:31:39","updatedAt":"2025-12-08 01:31:39"},
+{"id":"10","date":"2025-12-08 03:05:20","subtotal":"800.00","total":"800.00","amountPaid":"1000.00","change":"200.00","paymentMethod":"efectivo","code":"SALE-20251208-1765163092531","createdAt":"2025-12-08 03:04:52","updatedAt":"2025-12-08 03:04:52"}
+]
+}
+]

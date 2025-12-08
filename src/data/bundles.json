@@ -1,0 +1,12 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"pos_pirotecnia"},
+{"type":"table","name":"bundles","database":"pos_pirotecnia","data":
+[
+{"id":"3","name":"Caja de Fosforos x40","price":"16000.00","code":null,"img":null,"active":"1","createdAt":"2025-12-06 01:27:29","updatedAt":"2025-12-08 00:43:26"},
+{"id":"5","name":"Caja de abejitas x12","price":"6000.00","code":null,"img":null,"active":"1","createdAt":"2025-12-06 02:59:03","updatedAt":"2025-12-08 00:43:06"},
+{"id":"6","name":"Bolsa de cañitas silbadoras x12","price":"3000.00","code":null,"img":null,"active":"1","createdAt":"2025-12-06 03:13:45","updatedAt":"2025-12-08 00:42:03"},
+{"id":"8","name":"Caja de estrellitas x10","price":"7500.00","code":null,"img":null,"active":"1","createdAt":"2025-12-06 05:36:37","updatedAt":"2025-12-08 00:50:58"}
+]
+}
+]
