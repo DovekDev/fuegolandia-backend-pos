@@ -5,9 +5,26 @@ import { generateSaleCode } from "../utils/saleCode.js";
 
 // Función para calcular el total (ganancia real)
 function calcularTotal(subtotal, amountPaid, change) {
-  let total = amountPaid - Math.max(change, 0);
-  if (amountPaid === 0) total = 0;
+  let total = 0;
+  // Si no se pagó nada, pérdida total
+  if (amountPaid === 0) {
+    total = -subtotal;
+    return total;
+  }
+  total = amountPaid - Math.max(change, 0);
   return total;
+}
+
+// Función para calcular el total (ganancia real)
+function calcularChange(subtotal, change, amountPaid) {
+  let calculatedChange = 0;
+  // Si no se pagó nada, pérdida total
+  if (amountPaid === 0) {
+    calculatedChange = -subtotal;
+    return calculatedChange;
+  }
+  calculatedChange = change;
+  return change;
 }
 
 // Obtener todas las ventas
@@ -80,12 +97,14 @@ export async function createSale(req, res) {
     // Calcular total (ganancia real)
     const total = calcularTotal(subtotal, amountPaid, change);
 
+    const vuelto = calcularChange(subtotal, change, amountPaid);
+
     const newSale = new Sale({
       date,
       subtotal,
       total,
       amountPaid,
-      change,
+      vuelto,
       paymentMethod,
       code: generateSaleCode(),
       items,

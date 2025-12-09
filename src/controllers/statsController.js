@@ -6,6 +6,7 @@ export async function getStatsSummary(req, res) {
   try {
     // Total de todas las ventas
     const totalAllAgg = await Sale.aggregate([
+      { $match: { total: { $gt: 0 } } },
       { $group: { _id: null, total: { $sum: "$total" } } }
     ]);
     const totalAll = totalAllAgg.length > 0 ? totalAllAgg[0].total : 0;
@@ -15,7 +16,7 @@ export async function getStatsSummary(req, res) {
     today.setHours(0, 0, 0, 0);
 
     const totalTodayAgg = await Sale.aggregate([
-      { $match: { date: { $gte: today } } },
+      { $match: { date: { $gte: today }, total: { $gt: 0 } } },
       { $group: { _id: null, total: { $sum: "$total" } } }
     ]);
     const totalToday = totalTodayAgg.length > 0 ? totalTodayAgg[0].total : 0;
