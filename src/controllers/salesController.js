@@ -4,27 +4,10 @@ import Bundle from "../database/models/Bundle.js";
 import { generateSaleCode } from "../utils/saleCode.js";
 
 // Función para calcular el total (ganancia real)
-function calcularTotal(subtotal, amountPaid, change) {
-  let total = 0;
-  // Si no se pagó nada, pérdida total
-  if (amountPaid === 0) {
-    total = -subtotal;
-    return total;
-  }
-  total = amountPaid - Math.max(change, 0);
-  return total;
-}
-
-// Función para calcular el total (ganancia real)
-function calcularChange(subtotal, change, amountPaid) {
-  let calculatedChange = 0;
-  // Si no se pagó nada, pérdida total
-  if (amountPaid === 0) {
-    calculatedChange = -subtotal;
-    return calculatedChange;
-  }
-  calculatedChange = change;
-  return change;
+function calcularTotal(subtotal, amountPaid) {
+  if (amountPaid === 0) return 0;
+  if (amountPaid >= subtotal) return subtotal;
+  return amountPaid;
 }
 
 // Obtener todas las ventas
@@ -95,16 +78,14 @@ export async function createSale(req, res) {
     }
 
     // Calcular total (ganancia real)
-    const total = calcularTotal(subtotal, amountPaid, change);
-
-    const vuelto = calcularChange(subtotal, change, amountPaid);
+    const total = calcularTotal(subtotal, amountPaid);
 
     const newSale = new Sale({
       date,
       subtotal,
       total,
       amountPaid,
-      vuelto,
+      change,
       paymentMethod,
       code: generateSaleCode(),
       items,
