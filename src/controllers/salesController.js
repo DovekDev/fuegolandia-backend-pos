@@ -4,8 +4,8 @@ import Bundle from "../database/models/Bundle.js";
 import { generateSaleCode } from "../utils/saleCode.js";
 
 // Función para calcular el total (ganancia real)
-function calcularTotal(subtotal, amountPaid) {
-  if (amountPaid === 0) return 0;
+function calcularTotal(subtotal, amountPaid, change) {
+  if (amountPaid === 0) return change;
   if (amountPaid >= subtotal) return subtotal;
   return amountPaid;
 }
@@ -78,7 +78,7 @@ export async function createSale(req, res) {
     }
 
     // Calcular total (ganancia real)
-    const total = calcularTotal(subtotal, amountPaid);
+    const total = calcularTotal(subtotal, amountPaid, change);
 
     const newSale = new Sale({
       date,
